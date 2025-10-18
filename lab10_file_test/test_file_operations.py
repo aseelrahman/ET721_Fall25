@@ -5,7 +5,7 @@ Lab 9 file operation test
 """
 import unittest
 import os
-from file_operations import read_file, write_file, append_file
+from file_operations import email_read
 
 class TestFileOperations(unittest.TestCase):
     def setUp(self):
@@ -57,6 +57,23 @@ class TestFileOperations(unittest.TestCase):
             final_data = f.read()
 
         self.assertEqual(final_data, initial_content + append_content)
+        
+    #EXERCISE 
+    def test_d(self):
+        with open(self.filename, "w") as f:
+            f.write("john@gmail.com\n")
+            f.write("mary@yahoo.com\n")
+            f.write("ali@hotmail.com\n")
+            f.write("sara@gmail.com\n")
+        f   .write("test@yahoo.com\n")
+
+        count_gmail = email_read(self.filename, "@gmail")
+        count_yahoo = email_read(self.filename, "@yahoo")
+        count_hotmail = email_read(self.filename, "@hotmail")
+    
+        self.assertEqual(count_gmail, 2)
+        self.assertEqual(count_yahoo, 2)
+        self.assertEqual(count_hotmail, 1)
 
 
 # run the unit tests automatically when the file is run
