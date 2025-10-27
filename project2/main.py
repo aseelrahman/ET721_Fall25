@@ -1,5 +1,3 @@
-# Improved Connect 4 Game
-
 class Connect4:
     ROWS = 6
     COLS = 7
