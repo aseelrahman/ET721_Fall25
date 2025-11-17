@@ -3,16 +3,20 @@ Aseel Rahman
 Sep 17, 2025
 Lab 6: objects and classes
 """
+
 print("\n ----- Example 1: create a class -----")
+
+
 class circle(object):
     def __init__(self, radius, color):
         self.radius = radius
         self.color = color
 
-    #method
+    # method
     def add_radius(self, r):
         self.radius += r
         return self.radius
+
 
 class Rectangle(object):
     def __init__(self, height, width, color):
@@ -23,10 +27,11 @@ class Rectangle(object):
     # method to calculate the area
     def area(self):
         return self.width * self.height
-    
+
     # method to calculate the perimeter
     def perimeter(self):
-        return 2*self.width + 2*self.height
+        return 2 * self.width + 2 * self.height
+
 
 # creating an instance of the class, which is an object
 circle1 = circle(4, "red")
@@ -52,16 +57,19 @@ circle2.add_radius(5)
 print(f"Radius of circle2 after method add_radius = {circle2.radius}")
 
 # accessing methods in Rectangle
-print(f"The area of the rectangle with length {rectangle1.width} and height {rectangle1.height} is {rectangle1.area()}")
+print(
+    f"The area of the rectangle with length {rectangle1.width} and height {rectangle1.height} is {rectangle1.area()}"
+)
 print(f"The perimeter of rectangle2 = {rectangle2.perimeter()}")
 
 print("\n ----- EXERCISE ----- ")
+
 
 class BankAccount:
     def __init__(self, account_number, account_holder):
         self.account_number = account_number
         self.account_holder = account_holder
-        self.balance = 0.0   
+        self.balance = 0.0
 
     def deposit(self, amount):
         self.balance += amount
@@ -77,9 +85,8 @@ class BankAccount:
 
 useraccount = BankAccount(123456789, "Aseel Rahman")
 
-useraccount.withdraw(700)   
-useraccount.deposit(1000)   
-useraccount.withdraw(500)   
+useraccount.withdraw(700)
+useraccount.deposit(1000)
+useraccount.withdraw(500)
 
 print(f"Final balance {useraccount.balance}")
-

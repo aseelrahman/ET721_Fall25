@@ -6,55 +6,55 @@ from main import Connect4
 
 
 class TestPlayGame(unittest.TestCase):
-    @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.input', side_effect=['1', '2', '3'])
+    @patch("sys.stdout", new_callable=StringIO)
+    @patch("builtins.input", side_effect=["1", "2", "3"])
     def test_game_start_and_win_message(self, mock_input, mock_stdout):
         game = Connect4()
-        with patch.object(game, 'check_win', side_effect=[False, False, True]):
-            with patch.object(game, 'is_full', return_value=False):
-                with patch.object(game, 'drop_chip', return_value=True):
+        with patch.object(game, "check_win", side_effect=[False, False, True]):
+            with patch.object(game, "is_full", return_value=False):
+                with patch.object(game, "drop_chip", return_value=True):
                     game.play_game()
         out = mock_stdout.getvalue()
         self.assertIn("Welcome to Connect 3!", out)
         self.assertIn("Player X wins!", out)
 
-    @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.input', side_effect=['abc', '1'])
+    @patch("sys.stdout", new_callable=StringIO)
+    @patch("builtins.input", side_effect=["abc", "1"])
     def test_invalid_input(self, mock_input, mock_stdout):
         game = Connect4()
-        with patch.object(game, 'check_win', side_effect=[True]):
-            with patch.object(game, 'is_full', return_value=False):
-                with patch.object(game, 'drop_chip', return_value=True):
+        with patch.object(game, "check_win", side_effect=[True]):
+            with patch.object(game, "is_full", return_value=False):
+                with patch.object(game, "drop_chip", return_value=True):
                     game.play_game()
         out = mock_stdout.getvalue()
         self.assertIn("Invalid input. Please enter a number between 1 and 7.", out)
         self.assertIn("wins!", out)
 
-    @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.input', side_effect=['1'])
+    @patch("sys.stdout", new_callable=StringIO)
+    @patch("builtins.input", side_effect=["1"])
     def test_full_board_tie(self, mock_input, mock_stdout):
         game = Connect4()
-        with patch.object(game, 'check_win', return_value=False):
-            with patch.object(game, 'is_full', return_value=True):
-                with patch.object(game, 'drop_chip', return_value=True):
+        with patch.object(game, "check_win", return_value=False):
+            with patch.object(game, "is_full", return_value=True):
+                with patch.object(game, "drop_chip", return_value=True):
                     game.play_game()
         out = mock_stdout.getvalue()
         self.assertIn("It's a tie! No more moves left.", out)
 
-    @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.input', side_effect=['1', '2'])
+    @patch("sys.stdout", new_callable=StringIO)
+    @patch("builtins.input", side_effect=["1", "2"])
     def test_player_switch(self, mock_input, mock_stdout):
         game = Connect4()
-        with patch.object(game, 'check_win', side_effect=[False, True]):
-            with patch.object(game, 'is_full', return_value=False):
-                with patch.object(game, 'drop_chip', return_value=True):
+        with patch.object(game, "check_win", side_effect=[False, True]):
+            with patch.object(game, "is_full", return_value=False):
+                with patch.object(game, "drop_chip", return_value=True):
                     game.play_game()
         out = mock_stdout.getvalue()
         self.assertIn("Player X's turn.", out)
         self.assertIn("Player O's turn.", out)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
 
 """

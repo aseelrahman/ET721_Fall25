@@ -14,12 +14,12 @@ what is function?
 - The body of the function only runs when the function is called.
 - to call a function, we need to write the function's name and parentheses
 """
-#import Python file
+# import Python file
 from lab5_rahman_function import *
 
 # call function product()
 print("\n ----- Example 1: intro function ----- ")
-n1 =2
+n1 = 2
 n2 = 5
 p = product(n1, n2)
 print(f"The product of {n1} and {n2} is {p}")
@@ -31,10 +31,12 @@ print(f"The product is {p}")
 print("\n ----- Example 2: function to calculate the hypotennues ----- ")
 s1 = 5
 s2 = 3
-hyp = hypotenues(s1,s2)
+hyp = hypotenues(s1, s2)
 print(f"The hypotenuse is {hyp:0.2f}")
 
-print("\n ----- Example 3: function to check if the number is positive, negative, or zero ----- ")
+print(
+    "\n ----- Example 3: function to check if the number is positive, negative, or zero ----- "
+)
 c = check_number(-3)
 print(f" The number is {c}")
 c = check_number(5)
@@ -43,7 +45,7 @@ c = check_number(0)
 print(f" The number is {c}")
 
 print("\n ----- Example 3: function in a list ----- ")
-grades = [50, 60,85, 93, 72, 98]
+grades = [50, 60, 85, 93, 72, 98]
 avg = check_grades(grades)
 print(f"Did I pass the class? {check_pass(avg)}")
 grades = [50, 60, 30, 50]
